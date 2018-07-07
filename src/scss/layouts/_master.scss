@@ -1,0 +1,30 @@
+.l-master{
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 70px auto 30px;
+	min-height: 100vh;
+}
+
+.l-master__header{
+}
+
+.l-master__content{
+}
+
+.l-master__footer{
+	background-color: orange;
+}
+
+@media (min-width: $breakpoint-lg){
+	.l-master{
+		display: grid;
+		grid-template-columns: 250px auto;
+		grid-template-rows: auto 30px;
+		height: 100vh;
+	}
+
+	.l-master__footer{
+		background-color: orange;
+		grid-column: 1 /span 2;
+	}
+}

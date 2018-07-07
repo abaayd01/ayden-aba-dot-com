@@ -1,33 +1,50 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </div>
+import navicon from '../img/navicon.svg';
+import aaLogo  from '../img/aa_logo.png';
+
+const HomeLogo = ({}) => (
+	<Link to='/'>
+		<div className="c-header__home-logo">
+			<h1>AA</h1>
+		</div>
+	</Link>
+);
+
+const NavList = ({}) => (
+	<div className="c-header__nav-list">
+		<ul>
+			<Link activeClassName='nav__item--active' to='/about' className="nav__item"><li>About</li></Link>
+			<Link activeClassName='nav__item--active' to='/portfolio' className="nav__item"><li>Portfolio</li></Link>
+			<Link activeClassName='nav__item--active' to='/contact' className="nav__item"><li>Contact</li></Link>
+		</ul>
+	</div>
+);
+
+export const Header = ({ siteTitle }) => (
+	<div className="l-master__header c-header">
+		<HomeLogo />
+		<NavList />
+	</div>
 )
 
-export default Header
+const HomeLogoMobile = ({}) => (
+	<Link to='/'>
+		<div className="c-header--mobile__home-logo">
+			<img src={aaLogo} alt="Home Logo" />
+		</div>
+	</Link>
+);
+
+export const HeaderMobile = ({ siteTitle }) => {
+	return (
+		<div className="l-master__header c-header--mobile">
+			<div></div>
+			<HomeLogoMobile />
+			<div className="c-header--mobile__navicon">
+				<img src={navicon} alt="navicon" />
+			</div>
+		</div>
+	);
+}

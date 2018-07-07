@@ -1,13 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import Media from "react-media";
 
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import { Header, MobileHeader } from '../components/Header';
 import '../scss/style.scss';
 
+const Content = ({children, className}) => {
+	return (
+		<div className='l-master__content' >
+			{children()}
+		</div>
+	);
+}
+
+const MobileContent = ({children, className}) => {
+	return (
+		<div className='l-master__content--mobile' >
+			{children()}
+		</div>
+	);
+}
+
+const Footer = ({className}) => {
+	return (
+		<div className='l-master__footer' >
+			<small>This is the footer</small>	
+		</div>
+	);
+}
+
 const Layout = ({ children, data }) => (
-  <div>
+  <div className='l-master'>
     <Helmet
       title={data.site.siteMetadata.title}
       meta={[
@@ -15,25 +39,33 @@ const Layout = ({ children, data }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
-    <Sidebar siteTitle={data.site.siteMetadata.title} />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      {children()}
-    </div>
+		<Media query="(min-width: 992px)">
+			{matches =>
+					matches ? (
+						<Header />
+					) : (
+						<MobileHeader />
+					)
+			}
+		</Media>
+		<Media query="(min-width: 992px)">
+			{matches =>
+					matches ? (
+						<Content> 
+							{children}
+						</Content>
+					) : (
+						<MobileContent> 
+							{children}
+						</MobileContent>
+					)
+			}
+		</Media>
+		<Footer />
   </div>
 )
 
-Layout.propTypes = {
-  children: PropTypes.func,
-}
-
-export default Layout
+export default Layout;
 
 export const query = graphql`
   query SiteTitleQuery {
@@ -43,4 +75,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

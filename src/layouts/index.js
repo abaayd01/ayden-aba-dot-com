@@ -3,12 +3,20 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Media from "react-media";
 
-import { Header, HeaderMobile } from '../components/Header';
+import { Header, MobileHeader } from '../components/Header';
 import '../scss/style.scss';
 
 const Content = ({children, className}) => {
 	return (
 		<div className='l-master__content' >
+			{children()}
+		</div>
+	);
+}
+
+const MobileContent = ({children, className}) => {
+	return (
+		<div className='l-master__content--mobile' >
 			{children()}
 		</div>
 	);
@@ -36,13 +44,23 @@ const Layout = ({ children, data }) => (
 					matches ? (
 						<Header />
 					) : (
-						<HeaderMobile />
+						<MobileHeader />
 					)
 			}
 		</Media>
-		<Content> 
-			{children}
-		</Content>
+		<Media query="(min-width: 992px)">
+			{matches =>
+					matches ? (
+						<Content> 
+							{children}
+						</Content>
+					) : (
+						<MobileContent> 
+							{children}
+						</MobileContent>
+					)
+			}
+		</Media>
 		<Footer />
   </div>
 )

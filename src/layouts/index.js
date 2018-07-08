@@ -30,7 +30,7 @@ const Footer = ({className}) => {
 	);
 }
 
-const Layout = ({ children, data }) => (
+const Layout = ({ children, data, location }) => (
   <div className='l-master'>
     <Helmet
       title={data.site.siteMetadata.title}
@@ -42,9 +42,9 @@ const Layout = ({ children, data }) => (
 		<Media query="(min-width: 992px)">
 			{matches =>
 					matches ? (
-						<Header />
+						<Header pathname={location.pathname}/>
 					) : (
-						<MobileHeader />
+						<MobileHeader pathname={location.pathname}/>
 					)
 			}
 		</Media>

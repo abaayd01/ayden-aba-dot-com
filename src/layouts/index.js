@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Media from "react-media";
 
-import { Header, MobileHeader } from '../components/Header';
+import { Header, MobileHeader } from '../components/header';
 import '../scss/style.scss';
 
 const Content = ({children, className}) => {

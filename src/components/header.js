@@ -123,32 +123,32 @@ const MobileNavicon = ({onClick}) => (
 
 const MobileNavList = ({ pathname }) => {
 	let 
-		homeActive,
-		aboutActive, 
-		portolfioActive, 
-		contactActive = false;
+		homeDynamicClasses,
+		aboutDynamicClasses, 
+		portfolioDynamicClasses, 
+		contactDynamicClasses;
 
 	switch(pathname){
 		case '/':
-			homeActive = true;
+			homeDynamicClasses = '--active';
 			break;
 		case '/about':
-			aboutActive = true;
+			aboutDynamicClasses= '--active';
 			break;
 		case '/portfolio':
-			portolfioActive = true;
+			portfolioDynamicClasses = '--active';
 			break;
 		case '/contact':
-			contactActive = true;
+			contactDynamicClasses = '--active';
 			break;
 	}
 
 	return (
 		<div className="c-header--mobile__nav-list">
 			<ul>
-				<Link activeClassName='nav__item--active' to='/about' className="c-header--mobile__nav-list__nav-link"><li>About</li></Link>
-				<Link activeClassName='nav__item--active' to='/portfolio' className="c-header--mobile__nav-list__nav-link"><li>Portfolio</li></Link>
-				<Link activeClassName='nav__item--active' to='/contact' className="c-header--mobile__nav-list__nav-link"><li>Contact</li></Link>
+				<Link activeClassName='nav__item--active' to='/about' className={"c-header--mobile__nav-list__nav-link " + aboutDynamicClasses }><li>About</li></Link>
+				<Link activeClassName='nav__item--active' to='/portfolio' className={"c-header--mobile__nav-list__nav-link " + portfolioDynamicClasses }><li>Portfolio</li></Link>
+				<Link activeClassName='nav__item--active' to='/contact' className={"c-header--mobile__nav-list__nav-link " + contactDynamicClasses }><li>Contact</li></Link>
 			</ul>
 		</div>
 	);

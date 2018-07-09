@@ -80,7 +80,21 @@
 
 				&.--active{
 					color: white;
-					background-color: $aa-red;
+
+					li{
+						background-color: $aa-red;
+						font-style: normal;
+					}
+				}
+
+				&:hover{
+					color: white;
+
+					li{
+						background-color: $aa-red;
+						font-style: normal;
+					}
+
 				}
 			}
 		}

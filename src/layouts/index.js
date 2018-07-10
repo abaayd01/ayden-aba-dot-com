@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Media from "react-media";
 
-import { Header, MobileHeader } from '../components/header';
+import { HeaderConstruction, MobileHeaderConstruction } from '../components/header-construction';
 import '../scss/style.scss';
 
 const Content = ({children, className}) => {
@@ -25,7 +25,7 @@ const MobileContent = ({children, className}) => {
 const Footer = ({className}) => {
 	return (
 		<div className='l-master__footer' >
-			<small>This is the footer</small>	
+			<small>{ '\u00A9' } Ayden Aba 2018.</small>	
 		</div>
 	);
 }
@@ -42,9 +42,9 @@ const Layout = ({ children, data }) => (
 		<Media query="(min-width: 992px)">
 			{matches =>
 					matches ? (
-						<Header />
+						<HeaderConstruction />
 					) : (
-						<MobileHeader />
+						<MobileHeaderConstruction />
 					)
 			}
 		</Media>

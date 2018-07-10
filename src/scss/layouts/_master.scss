@@ -9,15 +9,29 @@
 }
 
 .l-master__content{
+	display: flex;
+	align-items: center;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 100px;
 }
 
 .l-master__content--mobile{
 	position: relative;
+	display: flex;
+	text-align: left;
+	margin-bottom: 100px;
+	align-items: center;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .l-master__footer{
 	position: relative;
-	background-color: orange;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @media (min-width: $breakpoint-lg){
@@ -29,7 +43,6 @@
 	}
 
 	.l-master__footer{
-		background-color: orange;
 		grid-column: 1 /span 2;
 	}
 }

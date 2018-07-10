@@ -5,6 +5,7 @@ import Media from "react-media";
 
 import { HeaderConstruction, MobileHeaderConstruction } from '../components/header-construction';
 import '../scss/style.scss';
+import favicon from '../img/favicon.ico';
 
 const Content = ({children, className}) => {
 	return (
@@ -38,7 +39,10 @@ const Layout = ({ children, data }) => (
         { name: 'description', content: 'Sample' },
         { name: 'keywords', content: 'sample, something' },
       ]}
-    />
+    >
+				<link rel="shortcut icon" href={favicon} type="image/x-icon"/>
+				<link rel="icon" href={favicon} type="image/x-icon"/>
+		</Helmet>
 		<Media query="(min-width: 992px)">
 			{matches =>
 					matches ? (
